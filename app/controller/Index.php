@@ -20,6 +20,6 @@ use think\facade\Log;
 
 class Index{
     public function index(){
-        return "这里是微信云托管";
+        return "长沙IT服务公众号 微信云托管";
     }
 }
