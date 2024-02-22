@@ -37,7 +37,7 @@ class Record{
     $openid=Request::param('openid');
     //$result=Db::table('recorder')->where('openid',$openid)->order('id','desc')->limit(10)->select();
     //select *from ( select * from table1 order by datetime desc limit 0,10 ) order by datetime
-    $result=Db::query("select * from (select * from recorder where openid='{$openid}' order by id desc limit 0,5) as a order by id");
+    $result=Db::query("select * from (select * from wechat where openid='{$openid}' order by id desc limit 0,5) as a order by id");
            return json_encode($result,JSON_UNESCAPED_UNICODE);
   }
   public function login(){
