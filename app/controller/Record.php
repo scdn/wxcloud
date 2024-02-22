@@ -1,13 +1,13 @@
 <?php
 namespace app\controller;
-use think\Controller;
-use think\Request;
-use think\Db;
+use think\facade\Request;
+use think\facade\Db;
 
-class Recorder extends Controller{
+class Record{
   public function index(){
-    $nick=$this->request->param('nick');
-    $openid=$this->request->param('openid');
+
+    $nick=Request::param('nick');
+    $openid=Request::param('openid');
     $dir="static/upload/";
     if(isset($_FILES["file"])){
     $file=$dir.basename($_FILES["file"]["name"]);
@@ -34,14 +34,14 @@ class Recorder extends Controller{
     }
   }
   public function read(){
-    $openid=$this->request->param('openid');
+    $openid=Request::param('openid');
     //$result=Db::table('recorder')->where('openid',$openid)->order('id','desc')->limit(10)->select();
     //select *from ( select * from table1 order by datetime desc limit 0,10 ) order by datetime
     $result=Db::query("select * from (select * from recorder where openid='{$openid}' order by id desc limit 0,5) as a order by id");
            return json_encode($result,JSON_UNESCAPED_UNICODE);
   }
   public function login(){
-    $code=$this->request->param('code');
+    $code=Request::param('code');
     $appid="wx836770f3f9ee5ba8";
     $secret="4602de890263a7a1acf49574d4c33dc5";
     $url="https://api.weixin.qq.com/sns/jscode2session?";
