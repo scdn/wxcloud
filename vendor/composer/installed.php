@@ -1,11 +1,11 @@
 <?php return array(
     'root' => array(
-        'pretty_version' => 'dev-main',
-        'version' => 'dev-main',
+        'pretty_version' => 'dev-master',
+        'version' => 'dev-master',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '6c98f35ab06a889fc3cc36a3a62fb75d691bbdea',
+        'reference' => '0c0a4483bb7b5361390fb54115f1fc3b8c137171',
         'name' => 'topthink/think',
         'dev' => true,
     ),
@@ -110,12 +110,12 @@
             'dev_requirement' => false,
         ),
         'topthink/think' => array(
-            'pretty_version' => 'dev-main',
-            'version' => 'dev-main',
+            'pretty_version' => 'dev-master',
+            'version' => 'dev-master',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '6c98f35ab06a889fc3cc36a3a62fb75d691bbdea',
+            'reference' => '0c0a4483bb7b5361390fb54115f1fc3b8c137171',
             'dev_requirement' => false,
         ),
         'topthink/think-helper' => array(
@@ -136,6 +136,15 @@
             'reference' => '5d3d5c1ebf8bfccf34bacd90edb42989b16ea409',
             'dev_requirement' => false,
         ),
+        'topthink/think-template' => array(
+            'pretty_version' => 'v2.0.10',
+            'version' => '2.0.10.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../topthink/think-template',
+            'aliases' => array(),
+            'reference' => '2b28c9f787c94f6c22312c9fe97dd3d926c03e1c',
+            'dev_requirement' => false,
+        ),
         'topthink/think-trace' => array(
             'pretty_version' => 'v1.4',
             'version' => '1.4.0.0',
@@ -144,6 +153,15 @@
             'aliases' => array(),
             'reference' => '9a9fa8f767b6c66c5a133ad21ca1bc96ad329444',
             'dev_requirement' => true,
+        ),
+        'topthink/think-view' => array(
+            'pretty_version' => 'v1.0.14',
+            'version' => '1.0.14.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../topthink/think-view',
+            'aliases' => array(),
+            'reference' => 'edce0ae2c9551ab65f9e94a222604b0dead3576d',
+            'dev_requirement' => false,
         ),
     ),
 );

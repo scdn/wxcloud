@@ -42,8 +42,8 @@ class Record{
   }
   public function login(){
     $code=Request::param('code');
-    $appid="wx836770f3f9ee5ba8";
-    $secret="4602de890263a7a1acf49574d4c33dc5";
+    $appid="wx953047dd358bc805";
+    $secret="9c6c01c8a7a99fed09fad469fccbf29d";
     $url="https://api.weixin.qq.com/sns/jscode2session?";
     $query=http_build_query([
       'appid'=>$appid,
