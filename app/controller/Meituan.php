@@ -3,7 +3,7 @@ namespace app\controller;
 use think\facade\View;
 
 class Meituan{
-    function app(){
+    public function app(){
         return View::fetch();
     }
 }
