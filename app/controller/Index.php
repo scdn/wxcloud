@@ -17,9 +17,10 @@ use app\model\Counters;
 use think\response\Html;
 use think\response\Json;
 use think\facade\Log;
+use think\facade\View;
 
 class Index{
     public function index(){
-        return "长沙IT服务公众号 微信云托管";
+        return View::fetch();
     }
 }
