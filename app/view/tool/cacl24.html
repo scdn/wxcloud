@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>计算24点</title>
+		<meta name="description" content="24点速算公式，只需提供4个数值，帮你快速算出24点">
+        <meta name="keywords" content="24点计算,24点公式,24点游戏">
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1">
+        <style type="text/css">
+            *{
+                margin: 0;
+                padding: 0;
+            }
+            body{
+                font-size:12px;
+                font-family: "Microsoft Yahei",Arial,Helvetica;
+            }
+            button,input{
+                font-family: "Microsoft Yahei",Arial,Helvetica;
+            }
+			.inner{
+				max-width: 960px;
+				padding: 0 10px;
+				margin: 0 auto;
+			}
+			.container{
+				margin-bottom: 20px;
+			}
+
+			.mod-head{
+				padding: 10px 0;
+				text-align: right;
+			}
+			.mod-head .btn{
+				position: relative;
+				display: inline-block;
+				min-width: 56px;
+				height: 34px;
+				background: #fff;
+				padding: 0 12px;
+				border: 1px solid #ececec;
+				border-radius: 6px;
+				line-height: 34px;
+				vertical-align: middle;
+				text-decoration: none;
+				text-align: center;
+				font-size: 14px;
+				color: #333;
+				overflow: hidden;
+				transition: color .2s,opacity .2s;
+				font-family: Tahoma,Arial, Helvetica,"Microsoft YaHei";
+				outline: none;
+				-webkit-appearance: none;
+			}
+			.mod-head .btn:after {
+				content: " ";
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				background: #000;
+				left: 0;
+				top: 0;
+				opacity: 0;
+				transition: opacity .2s;
+				border-radius: 6px;
+				overflow: hidden;
+				pointer-events: none;
+			}
+			.mod-head .btn span,.mod-head .btn svg{
+				vertical-align: middle;
+			}
+			.mod-head .btn svg,.mod-head .btn svg+span{
+				position: relative;
+				top: -1px;
+			}
+			.mod-head .btn:hover {
+				color: #000;
+				opacity: 1;
+			}
+			.mod-head .btn:hover:after {
+				opacity: .02;
+			}
+
+            .mod-panel{
+                max-width: 640px;
+                margin: 0 auto 20px;
+                padding: 20px;
+                line-height: 24px;
+				font-size: 14px;
+            }
+			.mod-panel p{
+				line-height: 30px;
+				font-size: 16px;
+			}
+            .mod-panel .operation-box{
+                margin: 20px 0;
+            }
+            .mod-panel input[type="number"]{
+                width: 60px;
+                border: 1px solid #e8e8e8;
+                border-radius: 6px;
+                line-height: 48px;
+                text-align: center;
+                font-size: 24px;
+                font-weight: bold;
+                outline: none;
+            }
+            .mod-panel .btn{
+                display: inline-block;
+                height: 36px;
+                min-width: 90px;
+                padding: 0 12px;
+                background: #2095f2;
+                border: medium none;
+                line-height: 36px;
+                text-align: center;
+                vertical-align: middle;
+                font-size: 15px;
+                color: #fff;
+                cursor: pointer;
+                outline: none;
+                border-radius: 4px;
+                text-decoration: none;
+            }
+			.mod-panel .btn:hover{
+				background: #207fcc;
+			}
+			.mod-panel .btn-green{
+                background: #4bae4f;
+            }
+			.mod-panel .btn-green:hover{
+				background: #47a04b;
+			}
+            .mod-panel textarea{
+                display: block;
+                width:100%;
+                height:240px;
+                padding: 15px;
+				background: #fcfcfc;
+                border: 1px solid #e8e8e8;
+                border-radius: 6px;
+                box-sizing: border-box;
+                outline: none;
+				font-size: 15px;
+            }
+
+            .mod-foot .bd{
+                text-align:center;
+                color:#666;
+            }
+            .mod-foot .bd a{
+                color:#666;
+                text-decoration:none;
+            }
+            .mod-foot .bd a:hover{
+                text-decoration:underline;
+            }
+        </style>
+        <script type="text/javascript" src="https://lingtiantech.oss-cn-guangzhou.aliyuncs.com/static/calc24.js"></script>
+    </head>
+    <body>
+        <div class="wrapper">
+			<div class="header">
+                <div class="inner">
+                    <div class="mod-head">
+                        
+                    </div>
+                </div>
+            </div>
+			<div class="container">
+                <div class="inner">
+                    <div class="mod-panel">
+                        <div class="bd">
+							<div class="input-box">
+								<p>输入数字：</p>
+								<p>
+									<input type="number" name="number" min="1"/>
+									<input type="number" name="number" min="1"/>
+									<input type="number" name="number" min="1"/>
+									<input type="number" name="number" min="1"/>
+								</p>
+							</div>
+							<div class="operation-box">
+								<button class="btn btn-blue" id="random">随机</button>
+								<button class="btn btn-green" id="start">计算</button>
+							</div>
+							<div class="output-box">
+								<p>计算结果：</p>
+								<p>
+									<textarea id="reslut"></textarea>
+								</p>
+							</div>
+						</div>
+                    </div>
+                </div>
+            </div>
+			<div class="footer">
+				<div class="inner">
+					<script type="text/javascript">
+						let $number = document.querySelectorAll('input[name="number"]');
+						let list = [];
+						for(let i=1;i<=52;i++){
+							list.push(i%13+1);
+						}
+						document.getElementById('random').onclick = function(){
+							list.sort(function(){
+								return Math.random()>0.5?1:-1;
+							});
+							$number.forEach(function(item,index){
+								item.value = list[index];
+							});
+						}
+						document.getElementById('start').onclick = function(){
+							let list = [];
+							$number.forEach(function($item){
+								list.push(+$item.value||0);
+							});
+							let arr = calc24(...list);
+							let str = arr.length?'':'不能够计算得到！';
+							for(let i = arr.length;i--;){
+								str += arr[i]+'\n';
+							}
+							document.getElementById('reslut').value = str; 
+						}
+					</script>
+					
+				</div>
+			</div>
+        </div>
+    </body>
+</html>
